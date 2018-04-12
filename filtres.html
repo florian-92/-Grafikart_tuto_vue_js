@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .succes {
+        background-color: green;
+    }
+
+    .error {
+        background-color: red;
+    }
+</style>
+<body>
+<div id="app">
+    {{ message | capitalize('azer', 'azer')}}
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+<script>
+
+    Vue.filter('capitalize', function (value,prefix,suffix) {
+        return prefix + value.toUpperCase() + suffix
+    })
+/*
+ *  capitalize prend valeur ensuite 'aze' et 'azer'
+ *  */
+
+    Vue.filter('reverse', function (value) {
+        return value.toUpperCase()
+    })
+
+    let vm = new Vue({
+        el: '#app',
+        filters: { capitalize}, // permet de l'utiliser que pour une vue au lieu de toute par default
+        data: {
+            message: 'Salut les gens'
+        }
+    })
+</script>
+</body>
+</html>

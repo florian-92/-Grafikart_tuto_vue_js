@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .succes {
+        background-color: green;
+    }
+
+    .error {
+        background-color: red;
+    }
+</style>
+<body>
+<div id="app">
+<!-- comment pour les messages de succes sauf que la on en a beaucoup donc on crée un composant-->
+    <message type="succes" :message="message"></message>
+    <counter></counter>
+    <counter :start="3"></counter>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+<script>
+
+  /*  let message = {
+        props: {
+            type:{type: String, default:'succes'},
+            message: String
+        },
+        template: '<div class="message" :class="type">{{message}}</div>'
+
+
+    } */
+
+  let counter = {
+
+      data: function() {
+          return {
+              count: 0
+          }
+      },
+
+      props:{
+          start: {type: Number, default: 0}
+      },
+
+
+      methods: {
+          increment: function () {
+              this.count ++
+          }
+      },
+
+      mounted: function () {
+          this.count = this.start
+      },
+
+      template:
+      '<button @click="increment">{{count}}</button>' +
+      '</div>'
+  }
+
+    Vue.component('message', {
+        props:['type','message'], // definir ce que accepte le composant, per
+        template: '<div class="message" :class="type">{{message}}</div>'
+        }
+    )
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            message: 'Wsh alors'
+        },
+
+       /* components: { message } */
+        components: {counter}
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .succes {
+        background-color: green;
+    }
+
+    .error {
+        background-color: red;
+    }
+</style>
+<body>
+<div id="app">
+    <a href="http://grafikart.fr" @click.stop="demo">Demonstration</a>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+<script>
+    let vm = new Vue ({
+        el:'#app',
+        data: {
+            firstname: "Jean",
+            lastname: 'DeLaTour',
+            fullname:''
+        },
+
+        methods: {
+            demo: function () {
+                console.log('saluite')
+
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .succes {
+        background-color: green;
+    }
+
+    .error {
+        background-color: red;
+    }
+</style>
+<body>
+<div id="app">
+     <p>
+         prenom : {{firstname}} <br>
+         nom : {{lastname}} <br>
+         nomcomplet : <input type="text" v-model="fullname">
+     </p>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+<script>
+    let vm = new Vue ({
+        el:'#app',
+        data: {
+            firstname: "Jean",
+            lastname: 'DeLaTour'
+        },
+
+        computed: {
+
+            fullname: {
+                get: function () {
+                    return this.firstname + ' ' + this.lastname
+                },
+
+                set: function (value) {
+                    let parts = value.split(' ')
+                    this.firstname = parts[0]
+                    this.lastname = parts[1]
+                }
+            }
+
+        }
+    })
+</script>
+</body>
+</html>
